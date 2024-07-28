@@ -47,7 +47,7 @@ def fetch_experienced_jobs():
 
     db: Session= SessionLocal()
     try:
-        jobs= crud.get_all_jobs_Experienced(db)
+        jobs= crud.get_all_jobs_experienced(db)
         return jobs
     except Exception as e:
         logger.error(f"Error fetching jobs for Fresher:{e}")
@@ -58,7 +58,7 @@ def fetch_experienced_jobs():
 def fetch_entrylevel_jobs():
     db: Session= SessionLocal()
     try:
-        jobs= crud.get_all_jobs_EntryLevel(db)
+        jobs= crud.get_all_jobs_entry_level(db)
         return jobs
     except Exception as e:
         logger.error(f"Error fetching jobs for Fresher:{e}")
