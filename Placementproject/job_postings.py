@@ -90,3 +90,11 @@ def getExperiencedjobs():
         return jobs
     except Exception as e:
         raise HTTPException(status_code=500,detail=f"Error scraping jobs: {e}")
+
+@router.get("/getInternships")
+def getFresherjobs():
+    try:
+        jobs=FetchAlljobs.fetch_internships()
+        return jobs
+    except Exception as e:
+        raise HTTPException(status_code=500,detail=f"Error scraping jobs: {e}")

@@ -32,7 +32,19 @@ def fetch_fresher_jobs():
     finally:
         db.close()
 
+def fetch_internships():
+   db: Session= SessionLocal()
+   try:
+      jobs= crud.get_all_internships(db)
+      return jobs
+   except Exception as e:
+      logger.error(f"Error Fetching jobs for Interns{e}")
+      return []
+   finally:
+      db.close()
+      
 def fetch_experienced_jobs():
+
     db: Session= SessionLocal()
     try:
         jobs= crud.get_all_jobs_Experienced(db)
@@ -53,3 +65,17 @@ def fetch_entrylevel_jobs():
         return []
     finally:
         db.close()
+
+
+def delete_all_from_Db_Experienced():
+    db:Session= SessionLocal()
+    try:
+        jobs= crud.delete_all_from_db_experienced()
+        return jobs
+    except Exception as e:
+        logger.error(f"Error deleting the jobs{e}")
+        return []
+    finally:
+        db.close()
+
+    
