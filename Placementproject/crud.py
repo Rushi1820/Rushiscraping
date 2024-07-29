@@ -69,7 +69,7 @@ def get_job_posting(db: Session, job_posting_id: int):
     return db.query(models.JobPosting).filter(models.JobPosting.id == job_posting_id).first()
 
 def get_all_jobs_fresher(db: Session) -> List[Dict]:
-    jobs = db.query(models.FreshersandInterns).filter(models.FreshersandInterns.years_of_experience == "Fresher").all()
+    jobs = db.query(models.FreshersandInterns).filter(models.FreshersandInterns.years_of_experience == "Fresher").order_by(models.FreshersandInterns.created_on.desc()).all()
 
     job_list = []
     for job in jobs:
@@ -87,7 +87,7 @@ def get_all_jobs_fresher(db: Session) -> List[Dict]:
     return job_list
 
 def get_all_internships(db: Session) -> List[Dict]:
-    jobs = db.query(models.FreshersandInterns).filter( models.FreshersandInterns.years_of_experience == "Intern").all()
+    jobs = db.query(models.FreshersandInterns).filter( models.FreshersandInterns.years_of_experience == "Intern").order_by(models.FreshersandInterns.created_on.desc()).all()
 
     job_list = []
     for job in jobs:
@@ -105,7 +105,7 @@ def get_all_internships(db: Session) -> List[Dict]:
     return job_list
 
 def get_all_jobs_entry_level(db: Session) -> List[Dict]:
-    jobs = db.query(models.JobPosting).filter(models.JobPosting.years_of_experience == "Entry Level").all()
+    jobs = db.query(models.JobPosting).filter(models.JobPosting.years_of_experience == "Entry Level").order_by(models.FreshersandInterns.created_on.desc()).all()
     job_list = []
     for job in jobs:
         job_dict = {
@@ -122,7 +122,7 @@ def get_all_jobs_entry_level(db: Session) -> List[Dict]:
     return job_list
 
 def get_all_jobs_experienced(db: Session) -> List[Dict]:
-    jobs = db.query(models.JobPosting).filter(models.JobPosting.years_of_experience == "Experienced Professionals").all()
+    jobs = db.query(models.JobPosting).filter(models.JobPosting.years_of_experience == "Experienced Professionals").order_by(models.FreshersandInterns.created_on.desc()).all()
     job_list = []
     for job in jobs:
         job_dict = {
